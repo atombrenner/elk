@@ -1,0 +1,39 @@
+version: "3"
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:${ELK_VERSION}
+    environment:
+      - xpack.security.enabled=false
+    ports:
+      - 5601:5601
+
+  filebeat:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
+
+volumes:
+  esdata:
+    driver: local
