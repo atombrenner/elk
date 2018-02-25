@@ -42,6 +42,7 @@ services:
       context: ./logstash
       args:
         - ELK_VERSION=${ELK_VERSION}
+    image: elk_customized_logstash:${ELK_VERSION}      
     #image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
     environment:
       - log.level=info
