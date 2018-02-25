@@ -12,6 +12,7 @@ Remember that this is a test environment intended for local machines.
 
 Clone this repository, specify the version in the .env file and fire it up
 with `docker-compose up`. You can access Kibana via http://localhost:5601.
+T
 
 ## ELK Version
 Put the version you want to use in the `.env` file. Don't forget to remove

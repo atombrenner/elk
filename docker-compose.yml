@@ -29,13 +29,20 @@ services:
   filebeat:
     depends_on:
       - elasticsearch
+      - logstash
     image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
       - ./logs:/logs
 
   logstash:
+    depends_on:
+      - elasticsearch
     image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
+    environment:
+      - log.level=info
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
 
 volumes:
   esdata:
