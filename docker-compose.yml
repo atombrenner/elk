@@ -38,7 +38,11 @@ services:
   logstash:
     depends_on:
       - elasticsearch
-    image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
+    build: # we build a custom image because we want to test the truncate plugin
+      context: ./logstash
+      args:
+        - ELK_VERSION=${ELK_VERSION}
+    #image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
     environment:
       - log.level=info
     volumes:
