@@ -14,8 +14,8 @@ filebeat.prospectors:
   json.add_error_key: true # generate json_error filed if parsing of json failed
 
 processors:
- - drop_fields:
-     fields: ["prospector.type", "beat", "offset", "source", "input_type"]
+  - drop_fields: # we can drop fields here early, no need to do this in logstash
+      fields: ["prospector.type", "input_type", "beat", "offset", "source"]
 
 # output.elasticsearch:
 #   hosts: ["http://elasticsearch:9200"]
