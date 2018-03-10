@@ -15,6 +15,7 @@ with `docker-compose up`. You can access Kibana via http://localhost:5601.
 
 The permissions for filebeat.yml must be set `chmod go-w filebeat.yml`.
 
+To create some example logs, `node appp.js`
 
 ## ELK Version
 Put the version you want to use in the `.env` file. Don't forget to remove
@@ -23,3 +24,12 @@ your data volume when switching between major versions, e.g.
 
 - 5.6.7
 - 6.2.1
+- 6.2.2
+
+
+## X-Pack Trial
+```
+GET _xpack
+GET _xpack/license/trial_status
+POST _xpack/license/start_trial
+```

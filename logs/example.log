@@ -1,1 +1,1 @@
-{"@timestamp":"2018-02-25T12:49:08.757Z","app":"someapp","msg":"some message","hash":"somehash"}
+{"@timestamp":"2018-02-25T12:49:08.757Z","app":"someapp","level":"info","msg":"some message","hash":"somehash"}
