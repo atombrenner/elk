@@ -3,7 +3,7 @@ filebeat.prospectors:
   scan_frequency: 1s
   enabled: true
   paths:
-    - /logs/app-*.log
+    - /logs/app*.log
   tags: ["filebeat_tag"]
   fields_under_root: true
   fields:
